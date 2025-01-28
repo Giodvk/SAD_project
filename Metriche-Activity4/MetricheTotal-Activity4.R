@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -42,7 +43,17 @@ metrics <- grouped_data %>%
 # Visualizza le metriche
 print(metrics)
 
+#La media dell'accelerazione totale per l'asse delle x è molto simile tra i vari soggetti
+# ed è molto simile anche a quella dell'attività 3(scendere). Per l'asse delle y è simile
+# nella maggior parte dei soggetti con alcune eccezioni che si discostano di molto.
 
+#La varianza e la deviazione standard è bassa in tutti e tre gli assi
+
+#La skewness per l'asse x, la maggior parte delle volte indica una distribuzione asimmetrica
+# a sinistra con alcune eccezioni a destra, mentre per l'asse y e z, la distribuzione dipende 
+# dal soggetto considerato
+
+#La curtosi in ogni soggetto mostra che la distribuzione in ogni asse è meno piccata di una normale
 
 # Calcola inizio, fine e centro di ogni finestra
 window_time <- grouped_data %>%

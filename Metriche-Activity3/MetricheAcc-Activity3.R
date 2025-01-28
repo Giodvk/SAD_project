@@ -5,12 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
-
-printMetrics <- function(x,y,z, metric){
-  print(paste(metric, x))
-  print(paste(metric, y))
-  print(paste(metric, z))
-}
+library(ggplot2)
 
 
 # Filtra e raggruppa i dati
@@ -42,20 +37,22 @@ metrics <- grouped_data %>%
 # Visualizza le metriche
 print(metrics)
 
-# Guardando le medie di tutte e tre le variabili notiamo che per 
-# la distribuzione delle variabili è asimmetrica a destra per la x poichè la media si 
-# discosta dalla mediana in positivo, per la y asimmetrica a sinistra mentre per la z
-# per alcuni soggetti a destra , per altri a sinistra
 
-#Per quanto riguarda la varianza e deviazione standard è molto alta per la x
-# mostrando che la body_acc_x è più variabile rispetto alle altre due
+#La media dell'accelereazione per la camminata a scendere varia da soggetto a soggetto
+# per quanto riguarda l'accelerazione dell'asse y e z. Invece per l'asse x rimane positiva la
+# maggior parte delle volte con alcune eccezioni negative
 
-# La skewness ci fa capire che la x ha una distribuzione quasi simmetrica leggeremente
-# asimmetrica a destra, l'y asimmetrica a sinistra e la z invece dipende dal soggeto.
-# Tutto queto rispetta in generale quanto detto dallo scarto tra media e mediana delle variabili
+#Per quanto riguarda la varianza e la deviazione standard, l'asse x presenta una maggiore 
+# variabilità rispetto agli altri due assi che hanno invece una maggiore stabilità
 
-# Per quanto riguarda la curtosi, per la variabilee x capiamo che è simile ad una normale,
-# l'y ha una distribuzione platicurtica insieme alla z
+#Per quanto riguarda la forma della distribuzione, l'asse x presenta per ogni soggetto
+# una coda a destra, l'asse delle y è sempre asimettrica a sinistra mentre l'asse delle z
+# varia da soggetto a soggetto
+
+#La curtosi dell'asse delle x per alcuni soggetti mostra che la distribuzione è leggermente più piccata
+# di una normale mentre per altri meno di una normale. L'asse delle y ha una distribuzione sempre 
+# più piccata di una normale, per ogni soggetto la z invece più piccata o meno.
+
 
 # Calcola inizio, fine e centro di ogni finestra
 window_time <- grouped_data %>%

@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -17,7 +18,7 @@ printMetrics <- function(x,y,z, metric){
 grouped_data <- df %>%
   filter(Activity == 2) %>% 
   group_by(Subject) %>% 
-  select(Subject, Activity, body_gyro_x, body_gyro_y, body_gyro_z, WindowID) %>%
+  select(Subject, Activity, body_total_x, body_total_y, body_total_z, WindowID) %>%
   mutate(
     # Assegna timestamp che partono da 0 per ogni soggetto (50Hz = 0.02 secondi)
     time_stamp = (row_number() - 1) * 0.02
@@ -43,18 +44,6 @@ metrics <- grouped_data %>%
 print(metrics)
 
 
-# Le medie dei giroscopi sono molto differenti tra loro, innanzitutto l'unica variabile
-# che presenta media con valori solo negativi è body_gyro_z la cui forma di distribuzione
-# è sempre asimmetrica a sinistra ad eccezione di alcuni soggetti. La x e la y del giroscopio 
-# hanno media che variano e la distribuzione cambia da soggetto a soggetto.
-
-# La varianza e la deviazione standard sono molto alte per quanto riguarda la y che è
-# la più varibile tra le tre 
-
-#Per quanto riguarda la skewness è molto variabile in tutte e tre i casi considerati
-# facendo capire che la forma della distribuzione cambia tra un soggeto a l'altro
-
-#La curtosi in tutte e tre le varibili è diversa cambiando in base al soggetto.
 
 
 # Calcola inizio, fine e centro di ogni finestra

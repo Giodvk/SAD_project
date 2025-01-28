@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -41,21 +42,19 @@ metrics <- grouped_data %>%
 
 # Visualizza le metriche
 print(metrics)
+      
 
-# Guardando le medie di tutte e tre le variabili notiamo che per 
-# la distribuzione delle variabili è asimmetrica a destra per la x poichè la media si 
-# discosta dalla mediana in positivo, per la y asimmetrica a sinistra mentre per la z
-# per alcuni soggetti a destra , per altri a sinistra
+#La media di ogni asse d'accelereazione per l'attività di stare seduti varia da soggetto
+# a soggetto per quanto riguarda l'asse delle x, mentre è simile tra tutti soggetti per la y e la z
 
-#Per quanto riguarda la varianza e deviazione standard è molto alta per la x
-# mostrando che la body_acc_x è più variabile rispetto alle altre due
+#La varianza e la deviazione standard sono basse per tutti e tre gli assi per ogni soggetto
+# suggerendo che la maggior parte dei valori si concentrano intorno alla media con alcune eccezioni
 
-# La skewness ci fa capire che la x ha una distribuzione quasi simmetrica leggeremente
-# asimmetrica a destra, l'y asimmetrica a sinistra e la z invece dipende dal soggeto.
-# Tutto queto rispetta in generale quanto detto dallo scarto tra media e mediana delle variabili
+#La skewness varia da soggetto a soggetto per tutti e tre gli assi 
 
-# Per quanto riguarda la curtosi, per la variabilee x capiamo che è simile ad una normale,
-# l'y ha una distribuzione platicurtica insieme alla z
+# La curtosi è estremamente alta per tutte e tre gli assi per ogni soggetto, suggerendo che
+# la maggior parte dei valori sono vicini alla media mentre quelli lontani da essa si discostano
+# di molto 
 
 # Calcola inizio, fine e centro di ogni finestra
 window_time <- grouped_data %>%

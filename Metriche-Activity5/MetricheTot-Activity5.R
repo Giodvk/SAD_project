@@ -15,7 +15,7 @@ printMetrics <- function(x,y,z, metric){
 
 # Filtra e raggruppa i dati
 grouped_data <- df %>%
-  filter(Activity == 1) %>% 
+  filter(Activity == 5) %>% 
   group_by(Subject) %>% 
   select(Subject, Activity, total_acc_x, total_acc_y, total_acc_z, WindowID) %>%
   mutate(

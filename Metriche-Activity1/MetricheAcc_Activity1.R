@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))

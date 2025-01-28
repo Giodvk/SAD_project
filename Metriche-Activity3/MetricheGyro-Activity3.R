@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -42,20 +43,16 @@ metrics <- grouped_data %>%
 # Visualizza le metriche
 print(metrics)
 
+# Le medie di tutte tre i giroscopi variano da soggetto, facendo intendere che ogni 
+# soggetto si differenzia nello scendere delle scale o una salita
 
-# Le medie dei giroscopi sono molto differenti tra loro, innanzitutto l'unica variabile
-# che presenta media con valori solo negativi è body_gyro_z la cui forma di distribuzione
-# è sempre asimmetrica a sinistra ad eccezione di alcuni soggetti. La x e la y del giroscopio 
-# hanno media che variano e la distribuzione cambia da soggetto a soggetto.
+#Per quanto riguarda la varianza e la deviazione standard il giroscopio sull'asse x 
+#presenta più varianza rispetto agli altri che presentano meno variabilità.
 
-# La varianza e la deviazione standard sono molto alte per quanto riguarda la y che è
-# la più varibile tra le tre 
+# La skewness varia da soggetto a soggetto per ogni asse considerato
 
-#Per quanto riguarda la skewness è molto variabile in tutte e tre i casi considerati
-# facendo capire che la forma della distribuzione cambia tra un soggeto a l'altro
-
-#La curtosi in tutte e tre le varibili è diversa cambiando in base al soggetto.
-
+# La curtosi presenta una stabilità in tutti gli assi, variando da soggetto a soggetto
+# mostrando sempre una distribuzione più piccata o meno di una normale
 
 # Calcola inizio, fine e centro di ogni finestra
 window_time <- grouped_data %>%

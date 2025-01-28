@@ -43,18 +43,7 @@ metrics <- grouped_data %>%
 print(metrics)
 
 
-# Le medie dei giroscopi sono molto differenti tra loro, innanzitutto l'unica variabile
-# che presenta media con valori solo negativi è body_gyro_z la cui forma di distribuzione
-# è sempre asimmetrica a sinistra ad eccezione di alcuni soggetti. La x e la y del giroscopio 
-# hanno media che variano e la distribuzione cambia da soggetto a soggetto.
 
-# La varianza e la deviazione standard sono molto alte per quanto riguarda la y che è
-# la più varibile tra le tre 
-
-#Per quanto riguarda la skewness è molto variabile in tutte e tre i casi considerati
-# facendo capire che la forma della distribuzione cambia tra un soggeto a l'altro
-
-#La curtosi in tutte e tre le varibili è diversa cambiando in base al soggetto.
 
 
 # Calcola inizio, fine e centro di ogni finestra

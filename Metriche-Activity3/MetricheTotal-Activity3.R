@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -42,6 +43,24 @@ metrics <- grouped_data %>%
 # Visualizza le metriche
 print(metrics)
 
+
+# Le medie dell'accelerazione totale per gli assi x e y tendono ad essere molto 
+# simili tra loro considerando i vari soggetti, l'unica che riesce a far distinguere un
+# soggetto dall'altro è quella dell'asse delle z.
+
+
+#La varianza e deviazioni standard sono leggermente alte per alcuni soggetti
+# solo per l'asse delle x, mentre l'asse delle y e z presentano meno dispersione è 
+# più concentrazione intorno alla media per ogni soggetto
+
+
+#Per ogni soggetto la skewness dell'asse x è positiva, suggerendo una distribuzione asimettrica
+# a destra, mentre per l'asse delle y è sempre negativa, suggerendo un'asimmetria a sinistra. La
+# skewness dell'asse z varia da soggetto a soggetto.
+
+#La curtosi per l'asse delle y e l'asse delle z mostra che la distribuzione e più
+# piccata di una normale mentre per l'asse delle x tende ad essere o pù piccata o meno ma mai
+# uguale ad una normale
 
 
 # Calcola inizio, fine e centro di ogni finestra

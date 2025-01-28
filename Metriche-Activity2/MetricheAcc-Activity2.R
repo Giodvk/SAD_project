@@ -42,20 +42,7 @@ metrics <- grouped_data %>%
 # Visualizza le metriche
 print(metrics)
 
-# Guardando le medie di tutte e tre le variabili notiamo che per 
-# la distribuzione delle variabili è asimmetrica a destra per la x poichè la media si 
-# discosta dalla mediana in positivo, per la y asimmetrica a sinistra mentre per la z
-# per alcuni soggetti a destra , per altri a sinistra
 
-#Per quanto riguarda la varianza e deviazione standard è molto alta per la x
-# mostrando che la body_acc_x è più variabile rispetto alle altre due
-
-# La skewness ci fa capire che la x ha una distribuzione quasi simmetrica leggeremente
-# asimmetrica a destra, l'y asimmetrica a sinistra e la z invece dipende dal soggeto.
-# Tutto queto rispetta in generale quanto detto dallo scarto tra media e mediana delle variabili
-
-# Per quanto riguarda la curtosi, per la variabilee x capiamo che è simile ad una normale,
-# l'y ha una distribuzione platicurtica insieme alla z
 
 # Calcola inizio, fine e centro di ogni finestra
 window_time <- grouped_data %>%

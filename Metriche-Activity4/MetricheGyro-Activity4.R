@@ -5,6 +5,7 @@ install.packages("tidyr")  # Solo se non è già installato
 library(tidyr)  # Carica il pacchetto
 library(dplyr)
 library(moments)
+library(ggplot2)
 
 printMetrics <- function(x,y,z, metric){
   print(paste(metric, x))
@@ -43,18 +44,17 @@ metrics <- grouped_data %>%
 print(metrics)
 
 
-# Le medie dei giroscopi sono molto differenti tra loro, innanzitutto l'unica variabile
-# che presenta media con valori solo negativi è body_gyro_z la cui forma di distribuzione
-# è sempre asimmetrica a sinistra ad eccezione di alcuni soggetti. La x e la y del giroscopio 
-# hanno media che variano e la distribuzione cambia da soggetto a soggetto.
+"La media dei giroscopi per tutti e tre gli assi per la seduta sono molto simili tra un
+soggetto e l'altro, non per tutti ovviamente, ci sono diversi sottoinsiemi simili tra loro"
 
-# La varianza e la deviazione standard sono molto alte per quanto riguarda la y che è
-# la più varibile tra le tre 
+"La varianza e deviazione standard in tutti e tre gli assi è molto bassa in tutti i soggtti,
+indicando che i valori si mantengono molto vicini alla media"
 
-#Per quanto riguarda la skewness è molto variabile in tutte e tre i casi considerati
-# facendo capire che la forma della distribuzione cambia tra un soggeto a l'altro
+"La skewness per l'asse delle z la maggior parte delle volte è negativa con alcune eccezioni positive
+mentre per l'asse delle x e delle y varia da soggetto a soggetto"
 
-#La curtosi in tutte e tre le varibili è diversa cambiando in base al soggetto.
+"La curtosi in tutti e tre gli assi è molto alta, suggerendo che i valori della distribuzione sono
+molto vicini alla media e quelli che si discotano da essa, hanno uno scostamento molto elevato"
 
 
 # Calcola inizio, fine e centro di ogni finestra
