@@ -92,3 +92,52 @@ metrics1[nrow(metrics1) + 1, ] <- summarise(body_acc_1,
 
 
 
+
+
+
+
+
+
+library(ggplot2)
+library(gridExtra)
+library(tidyr) # Make sure tidyr is loaded for pivot_longer
+
+# Sample Data (replace with your actual data)
+
+# Dati in formato lungo
+df_long <- df %>%
+  pivot_longer(
+    cols = c(body_acc_x, body_acc_y, body_acc_z),
+    names_to = "Asse",
+    values_to = "Valore"
+  )
+
+# Function to create boxplot for a single asse
+create_boxplot <- function(axis) {
+  
+  axis_label <- toupper(gsub("body_acc_", "", axis)) # Extract x, y, or z
+  
+  df_long %>%
+    filter(Asse == axis) %>%
+    ggplot(aes(x = factor(Activity), y = Valore, fill = factor(Activity))) +
+    geom_boxplot(alpha = 0.7) +
+    labs(
+      title = paste("Asse", axis_label),  # Use the extracted label
+      x = "Attività",
+      y = "Valore"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+
+# Combine the 3 graphs
+grid.arrange(
+  create_boxplot("body_acc_x"),
+  create_boxplot("body_acc_y"),
+  create_boxplot("body_acc_z"),
+  ncol = 3,
+  top = "Confronto Attività per Asse (Boxplot)"
+)
+
+
+
