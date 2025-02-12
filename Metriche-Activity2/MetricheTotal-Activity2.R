@@ -18,7 +18,7 @@ printMetrics <- function(x,y,z, metric){
 grouped_data <- df %>%
   filter(Activity == 2) %>% 
   group_by(Subject) %>% 
-  select(Subject, Activity, body_total_x, body_total_y, body_total_z, WindowID) %>%
+  select(Subject, Activity, total_acc_x, total_acc_y, total_acc_z, WindowID) %>%
   mutate(
     # Assegna timestamp che partono da 0 per ogni soggetto (50Hz = 0.02 secondi)
     time_stamp = (row_number() - 1) * 0.02
@@ -28,7 +28,7 @@ grouped_data <- df %>%
 metrics <- grouped_data %>% 
   summarise(
     across(
-      c(body_gyro_x, body_gyro_y, body_gyro_z),
+      c(total_acc_x, total_acc_y, total_acc_z),
       list(
         mean = ~ mean(.x, na.rm = TRUE),
         median = ~ median(.x, na.rm = TRUE),
@@ -99,8 +99,8 @@ media_data <- metrics_long %>%
 ggplot(media_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della media tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della media tra gli acc total(Activity 2)",
+    x = "Sensori",
     y = "Media"
   ) +
   theme_minimal()
@@ -112,8 +112,8 @@ sd_data <- metrics_long %>%
 ggplot(sd_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della deviazione standard tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della deviazione standard tra acc totali(Activity 2)",
+    x = "Sensori",
     y = "Deviazione standard"
   ) +
   theme_minimal()
@@ -124,8 +124,8 @@ skew_data <- metrics_long %>%
 ggplot(skew_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della skewness tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della skewness tra acc totali(Activity 2)",
+    x = "Sensori",
     y = "Skewness"
   ) +
   theme_minimal()

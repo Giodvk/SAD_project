@@ -111,8 +111,8 @@ media_data <- metrics_long %>%
 ggplot(media_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della media tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della media tra accelerazioni (Activity 1)",
+    x = "Sensore",
     y = "Media"
   ) +
   theme_minimal()
@@ -124,8 +124,8 @@ sd_data <- metrics_long %>%
 ggplot(sd_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della deviazione standard tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della deviazione standard tra accelerazioni (Activity 1)",
+    x = "Sensore",
     y = "Deviazione standard"
   ) +
   theme_minimal()
@@ -136,8 +136,8 @@ skew_data <- metrics_long %>%
 ggplot(skew_data, aes(x = Asse, y = Valore, fill = Asse)) +
   geom_boxplot() +
   labs(
-    title = "Confronto della skewness tra gli assi (Activity 1)",
-    x = "Asse",
+    title = "Confronto della skewness tra accelerazioni (Activity 1)",
+    x = "Sensore",
     y = "Skewness"
   ) +
   theme_minimal()
