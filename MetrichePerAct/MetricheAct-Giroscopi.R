@@ -92,3 +92,50 @@ metrics[nrow(metrics) + 1, ] <- summarise(body_gyro,
 
 
 
+
+
+
+
+library(ggplot2)
+library(gridExtra)
+library(tidyr) # Make sure tidyr is loaded for pivot_longer
+
+# Sample Data (replace with your actual data)
+
+# Dati in formato lungo
+df_long <- df %>%
+  pivot_longer(
+    cols = c(body_gyro_x, body_gyro_y, body_gyro_z),
+    names_to = "Giroscopio",
+    values_to = "Valore"
+  )
+
+# Function to create boxplot for a single asse
+create_boxplot <- function(axis) {
+  
+  axis_label <- toupper(gsub("body_gyro_", "", axis)) # Extract x, y, or z
+  
+  df_long %>%
+    filter(Giroscopio == axis) %>%
+    ggplot(aes(x = factor(Activity), y = Valore, fill = factor(Activity))) +
+    geom_boxplot(alpha = 0.7) +
+    labs(
+      title = paste("Asse", axis_label),  # Use the extracted label
+      x = "Attività",
+      y = "Valore"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+
+# Combine the 3 graphs
+grid.arrange(
+  create_boxplot("body_gyro_x"),
+  create_boxplot("body_gyro_y"),
+  create_boxplot("body_gyro_z"),
+  ncol = 3,
+  top = "Confronto Attività per Asse (Boxplot) - Giroscopio"
+)
+
+
+
