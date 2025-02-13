@@ -6,8 +6,7 @@ library(ggplot2)
 grouped_data <- df %>% 
   group_by(Activity, Subject) %>%
   filter(Activity == 2) %>%
-  select(Activity, Subject, body_acc_x, body_acc_y, body_acc_z, body_gyro_x, body_gyro_y, body_gyro_z,
-         total_acc_x)
+  select(Activity, Subject, body_acc_x, body_acc_y, body_acc_z, body_gyro_x, body_gyro_y, body_gyro_z)
 
 #Kernel Density Plot body_acc_x
 ggplot(grouped_data, aes(x = body_acc_x, color = as.factor(Subject), fill = as.factor(Subject))) +
@@ -36,7 +35,7 @@ ggplot(grouped_data, aes(x = body_acc_x))+
   theme_minimal()
 
 
-#BoxPlot body_acc_x attività 1
+#BoxPlot body_acc_x attività 2
 ggplot(grouped_data, aes(y = body_acc_x, color = as.factor(Subject), fill = as.factor(Subject))) +
   geom_boxplot(outlier.color = "red", outlier.shape = 16, alpha = 0.7) +
   labs(
@@ -309,13 +308,13 @@ ggplot(grouped_data, aes(x = body_gyro_z, color = as.factor(Subject), fill = as.
   theme_minimal()
 
 
-#Istogramma body_acc_x
+#Istogramma body_gyro_z
 ggplot(grouped_data, aes(x = body_gyro_z))+
   geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
   theme_minimal()
 
 
-#BoxPlot body_acc_x attività 1
+#BoxPlot body_gyro_z attività 2
 ggplot(grouped_data, aes(y = body_gyro_z, color = as.factor(Subject), fill = as.factor(Subject))) +
   geom_boxplot(outlier.color = "red", outlier.shape = 16, alpha = 0.7) +
   labs(

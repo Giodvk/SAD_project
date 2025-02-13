@@ -6,8 +6,7 @@ library(ggplot2)
 grouped_data <- df %>% 
   group_by(Activity, Subject) %>%
   filter(Activity == 6) %>%
-  select(Activity, Subject, body_acc_x, body_acc_y, body_acc_z, body_gyro_x, body_gyro_y, body_gyro_z,
-         total_acc_x)
+  select(Activity, Subject, body_acc_x, body_acc_y, body_acc_z, body_gyro_x, body_gyro_y, body_gyro_z)
 
 #Kernel Density Plot body_acc_x
 ggplot(grouped_data, aes(x = body_acc_x, color = as.factor(Subject), fill = as.factor(Subject))) +
