@@ -197,7 +197,7 @@ ggplot(grouped_data, aes(x = body_gyro_x, color = as.factor(Subject), fill = as.
   theme_minimal()
 
 
-#Istogramma body_acc_x
+#Istogramma body_gyro_x
 ggplot(grouped_data, aes(x = body_gyro_x))+
   geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
   theme_minimal()
